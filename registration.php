@@ -68,18 +68,31 @@ include 'inc/header1.php';
 									<textarea type="text" name="address" id="address" class="form-control" rows="3" required=""></textarea>
 								</div>
 								<div class="form-group">
-									<label for="course">Course ID: </label>
-									<select type="text" class="form-control" id="type" name="course">
-										<option>100</option>
-										<option>200</option>
+									<label for="course">Course Name: </label>
+									<select type="text" class="form-control" name="course" id="coursetb" onchange="change_course()">
+										<option>Select</option>
+										
+										<?php 
+											
+											$q = "SELECT * FROM course_tb";
+											$query = mysqli_query($conn,$q);
+
+											while ($res= mysqli_fetch_array($query)) {
+										?>
+
+											<option value="<?php echo $res['course_id']; ?>"><?php echo $res['course_name']; ?></option>
+
+										<?php 
+											}
+										?>
+
 									</select>
 								</div>
 
-								<div class="form-group">
-									<label for="batch">Batch ID:</label>
+								<div class="form-group" id="batch">
+									<label for="batch">Batch Name:</label>
 									<select type="text" class="form-control" id="type" name="batch">
-										<option>111</option>
-										<option>112</option>
+										<option>Select</option>
 									</select>
 								</div>
 								
@@ -95,3 +108,15 @@ include 'inc/header1.php';
 		</div>
 		
 <?php include 'inc/footer.php';?>
+
+<script type="text/javascript">
+
+	function change_course() {
+
+		var xmlhttp= new XMLHttpRequest();
+		xmlhttp.open("GET","ajax.php?course_id="+document.getElementById("coursetb").value,false);
+		xmlhttp.send(null);
+		document.getElementById("batch").innerHTML=xmlhttp.responseText;
+	}
+
+</script>
