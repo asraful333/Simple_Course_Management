@@ -44,7 +44,7 @@
 									<input type="text" name="batch_d" id="batch_d" class="form-control" required="" />
 								</div>
 								<div class="form-group">
-									<label for="type">Course ID:</label>
+									<label for="type">Course Name:</label>
 									
 									<select type="text" class="form-control" id="type" name="type">
 										<option>Select</option>
