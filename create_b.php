@@ -7,10 +7,8 @@
 												$batch_n = $_POST['batch_n'];
 												$batch_d = $_POST['batch_d'];
 												$type = $_POST['type'];
+
 												
-												echo $batch_n."<br/>";
-												echo $batch_d."<br/>";
-												echo $type."<br/>";
 
 												$qr = "INSERT INTO `batch_tb`(`batch_name`, `batch_dur`, `course_id`) VALUES ('$batch_n','$batch_d','$type')";
 
@@ -59,7 +57,7 @@
 											while ($res= mysqli_fetch_array($query)) {
 										?>
 
-										<option><?php echo $res['course_id']; ?></option>
+										<option value="<?php echo $res['course_id']; ?>"><?php echo $res['course_name']; ?></option>
 
 										<?php 
 											}
