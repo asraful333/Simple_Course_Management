@@ -1,6 +1,7 @@
 <?php 	
 
 		include 'inc/admin_se.php';
+		include 'inc/connect.php';
 		include 'inc/header1.php';
 		include 'inc/adminnav.php';
 ?>
@@ -23,29 +24,25 @@
 									<th></th>
 									<th></th>
 								</tr>
+
+								<?php
+									$sq= "SELECT * FROM batch_tb";
+									$que= mysqli_query($conn,$sq);
+									while ($vlu= mysqli_fetch_array($que)) {										
+								?>
+
 								<tr>
-									<td>111</td>
-									<td><input type="text" name="batch_n" id="batch_n" class="form-control" value="Konka" required="" /></td>
-									<td><input type="text" name="batch_d" id="batch_d" class="form-control" value="60 hours" required="" /></td>
-									<td><input type="text" name="course_i" id="course_i" class="form-control" value="100" required="" /></td>
+									<td><?php echo $vlu['batch_id'];?></td>
+									<td><input type="text" name="batch_n" id="batch_n" class="form-control" value="<?php echo $vlu['batch_name'];?>" required="" /></td>
+									<td><input type="text" name="batch_d" id="batch_d" class="form-control" value="<?php echo $vlu['batch_dur'];?>" required="" /></td>
+									<td><input type="text" name="course_i" id="course_i" class="form-control" value="<?php echo $vlu['course_id'];?>" required="" /></td>
 									<td><a class="btn btn-success" href="">Edit</a></td>
-									<td><a class="btn btn-success" href="">Delete</a></td>
 								</tr>
-								<tr>
-									<td>200</td>
-									<td><input type="text" name="batch_n" id="batch_n" class="form-control" value="Konka" required="" /></td>
-									<td><input type="text" name="batch_d" id="batch_d" class="form-control" value="60 hours" required="" /></td>
-									<td><input type="text" name="course_i" id="course_i" class="form-control" value="100" required="" /></td>
-									<td><a class="btn btn-success" href="">Edit</a></td>
-									<td><a class="btn btn-success" href="">Delete</a></td>
-								</tr><tr>
-									<td>300</td>
-									<td><input type="text" name="batch_n" id="batch_n" class="form-control" value="Konka" required="" /></td>
-									<td><input type="text" name="batch_d" id="batch_d" class="form-control" value="60 hours" required="" /></td>
-									<td><input type="text" name="course_i" id="course_i" class="form-control" value="100" required="" /></td>
-									<td><a class="btn btn-success" href="">Edit</a></td>
-									<td><a class="btn btn-success" href="">Delete</a></td>
-								</tr>								
+
+								<?php
+									}
+								?>
+																
 							</table>
 							
 						</div>
