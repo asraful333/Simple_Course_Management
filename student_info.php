@@ -31,43 +31,35 @@
 									<th>Result</th>
 									<th></th>
 									<th></th>
-									<th></th>
 								</tr>
+
+								<?php 
+										include 'inc/connect.php';
+
+										$q = "SELECT * FROM student_reg";
+										$query = mysqli_query($conn,$q);
+
+										while ($res= mysqli_fetch_array($query)) {
+										
+								?>
+
 								<tr>
-									<td>001</td>
-									<td><input type="text" name="name" id="name" class="form-control" value="Nayem" required="" /></td>
-									<td><input type="text" name="cell" id="cell" class="form-control" value="0160000000" required="" /></td>
-									<td><input type="text" name="address" id="address" class="form-control" value="Home..." required="" /></td>
-									<td><input type="text" name="batch_i" id="batch_i" class="form-control" value="111" required="" /></td>
-									<td><input type="text" name="course_i" id="course_i" class="form-control" value="100" required="" /></td>
-									<td><input type="text" name="result" id="result" class="form-control" value="" required="" /></td>
-									<td><a class="btn btn-success" href="">Edit</a></td>
-									<td><a class="btn btn-success" href="">Delete</a></td>
-									<td><a class="btn btn-success" href="" data-toggle="modal" data-target="#myModal">Print</a></td>
+									<td><?php echo $res['student_id']; ?></td>
+									<td><input type="text" name="name" id="name" class="form-control" value="<?php echo $res['student_name']; ?>" required="" /></td>
+									<td><input type="text" name="cell" id="cell" class="form-control" value="0<?php echo $res['cell']; ?>" required="" /></td>
+									<td><input type="text" name="address" id="address" class="form-control" value="<?php echo $res['address']; ?>" required="" /></td>
+									<td><input type="text" name="batch_i" id="batch_i" class="form-control" value="<?php echo $res['batch_id']; ?>" required="" /></td>
+									<td><input type="text" name="course_i" id="course_i" class="form-control" value="<?php echo $res['course_id']; ?>" required="" /></td>
+									<td><input type="text" name="result" id="result" class="form-control" value="<?php echo $res['result']; ?>" required="" /></td>
+									<td><a class="btn btn-success" name="update" href="update_s.php?student_id=<?php echo $res['student_id']; ?>">Update</a></td>
+									<td><a class="btn btn-success" href="certificate.php?student_id=<?php echo $res['student_id']; ?>">Certificale</a></td>
+
 								</tr>
-								<tr>
-									<td>200</td>
-									<td><input type="text" name="name" id="name" class="form-control" value="Nayem" required="" /></td>
-									<td><input type="text" name="cell" id="cell" class="form-control" value="0160000000" required="" /></td>
-									<td><input type="text" name="address" id="address" class="form-control" value="Home..." required="" /></td>
-									<td><input type="text" name="batch_i" id="batch_i" class="form-control" value="111" required="" /></td>
-									<td><input type="text" name="course_i" id="course_i" class="form-control" value="100" required="" /></td>
-									<td><input type="text" name="result" id="result" class="form-control" value="" required="" /></td>
-									<td><a class="btn btn-success" href="">Edit</a></td>
-									<td><a class="btn btn-success" href="">Delete</a></td>
-									<td><a class="btn btn-success" href="" data-toggle="modal" data-target="#myModal">Print</a></td>
-								</tr><tr>
-									<td>300</td>
-									<td><input type="text" name="name" id="name" class="form-control" value="Nayem" required="" style="" /></td>
-									<td><input type="text" name="cell" id="cell" class="form-control" value="0160000000" required="" /></td>
-									<td><input type="text" name="address" id="address" class="form-control" value="Home..." required="" /></td>
-									<td><input type="text" name="batch_i" id="batch_i" class="form-control" value="111" required="" /></td>
-									<td><input type="text" name="course_i" id="course_i" class="form-control" value="100" required="" /></td>
-									<td><input type="text" name="result" id="result" class="form-control" value="" required="" /></td>
-									<td><a class="btn btn-success" href="">Edit</a></td>
-									<td><a class="btn btn-success" href="">Delete</a></td>
-									<td><a class="btn btn-success" href="" data-toggle="modal" data-target="#myModal">Print</a></td>
-								</tr>								
+
+								<?php 
+									}
+								?>
+																
 							</table>
 							
 						</div>

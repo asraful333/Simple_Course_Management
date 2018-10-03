@@ -12,7 +12,7 @@
 					</div>
 					<div class="panel-body">
 						<div style="margin: 0 auto;">
-
+<form action="" method="POST">
 							<table class="table table-striped">
 								<tr>
 									<th>Course ID</th>
@@ -36,7 +36,7 @@
 									<td><?php echo $res['course_id']; ?></td>
 									<td><input type="text" name="course_n" id="course_n" class="form-control" value="<?php echo $res['course_name']; ?>" required="" /></td>
 									<td><input type="text" name="course_t" id="course_t" class="form-control" value="<?php echo $res['course_type']; ?>" required="" /></td>
-									<td><a class="btn btn-success" name="update" href="update.php?course_id=<?php echo $res['course_id']; ?>">Update</a></td>
+									<td><a class="btn btn-success" name="update" href="update_c.php?course_id=<?php echo $res['course_id']; ?>">Update</a></td>
 								</tr>
 
 								<?php
@@ -44,7 +44,7 @@
 								?>
 
 							</table>
-							
+	</form>						
 						</div>
 					</div>
 				</div>

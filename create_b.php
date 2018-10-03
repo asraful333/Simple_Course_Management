@@ -29,7 +29,7 @@
 			<div class="col-md-8">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3>Create Course</h3>
+						<h3>Create Batch</h3>
 					</div>
 					<div class="panel-body">
 						<div style="margin: 0 auto;">

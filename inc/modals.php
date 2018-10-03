@@ -13,34 +13,47 @@
 									<th>Title</th>
 									<th>Value</th>
 								</tr>
+
+								<?php
+									include 'inc/connect.php';
+					
+									$student_id= $_GET['student_id'];
+
+									$q = "SELECT * FROM student_reg WHERE student_id = $student_id ";
+									$query= mysqli_query($conn,$q);
+									$res= mysqli_fetch_assoc($query);
+									
+								?>
+
 								<tr>
 									<td>Student ID</td>
-									<td>001</td>
+									<td><?php echo $res['student_id']; ?></td>
 								</tr>
 								<tr>
 									<td>Name</td>
-									<td>Asraful Karim</td>
+									<td><?php echo $res['student_name']; ?></td>
 								</tr>
 								<tr>
 									<td>Cell</td>
-									<td>01676...</td>
+									<td>0<?php echo $res['cell']; ?></td>
 								</tr>
 								<tr>
 									<td>Address</td>
-									<td>House...</td>
+									<td><?php echo $res['address']; ?></td>
 								</tr>
 								<tr>
 									<td>Course ID</td>
-									<td>100</td>
+									<td><?php echo $res['course_id']; ?></td>
 								</tr>
 								<tr>
 									<td>Batch ID</td>
-									<td>111</td>
+									<td><?php echo $res['batch_id']; ?></td>
 								</tr>
 								<tr>
 									<td>Result</td>
-									<td></td>
+									<td><?php echo $res['result']; ?></td>
 								</tr>
+
 							</table>
 							<div style="text-align: center;"><a class="btn btn-success hidden-print" onclick="window.print()" href="">Print</a>
 							</div>

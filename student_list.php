@@ -53,7 +53,7 @@
 								<tr>
 									<td><?php echo $res['student_id']; ?></td>
 									<td><?php echo $res['student_name']; ?></td>
-									<td><?php echo $res['cell']; ?></td>
+									<td>0<?php echo $res['cell']; ?></td>
 									<td><?php echo $res['address']; ?></td>
 									<td><?php echo $res['batch_id']; ?></td>
 									<td><?php echo $res['course_id']; ?></td>

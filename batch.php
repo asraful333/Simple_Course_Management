@@ -36,7 +36,7 @@
 									<td><input type="text" name="batch_n" id="batch_n" class="form-control" value="<?php echo $vlu['batch_name'];?>" required="" /></td>
 									<td><input type="text" name="batch_d" id="batch_d" class="form-control" value="<?php echo $vlu['batch_dur'];?>" required="" /></td>
 									<td><input type="text" name="course_i" id="course_i" class="form-control" value="<?php echo $vlu['course_id'];?>" required="" /></td>
-									<td><a class="btn btn-success" href="">Edit</a></td>
+									<td><a class="btn btn-success" name="update" href="update_b.php?batch_id=<?php echo $vlu['batch_id']; ?>">Update</a></td>
 								</tr>
 
 								<?php
