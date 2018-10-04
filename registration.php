@@ -12,20 +12,27 @@
 
 	if (isset($_POST['done'])) {
 
-		$name = $_POST['name'];
-		$cell = $_POST['cell'];
-		$address = $_POST['address'];
+		$name = mysqli_real_escape_string($conn,$_POST['name']);
+		$cell = mysqli_real_escape_string($conn,$_POST['cell']);
+		$address = mysqli_real_escape_string($conn,$_POST['address']);
 		$batch = $_POST['batch'];
 		$course = $_POST['course'];
-		
 
-		$q = "INSERT INTO `student_reg`(`student_name`, `cell`, `address`, `batch_id`, `course_id`) VALUES ('$name','$cell','$address','$batch','$course')";
+		$sql_n= "SELECT * FROM student_reg WHERE student_name='$name' AND course_id='$course'";
+		$res_n= mysqli_query($conn,$sql_n) or die(mysqli_error($conn));
 
-		$query = mysqli_query($conn,$q);
-		if ($query) {
-			header('Location: student_list.php');
-		}else{
-			echo "Insert Failed!..";
+		if (mysqli_num_rows($res_n)>0) {
+			$msg= "Student is Already register in this course";
+		}
+		else{
+			$q = "INSERT INTO `student_reg`(`student_name`, `cell`, `address`, `batch_id`, `course_id`) VALUES ('$name','$cell','$address','$batch','$course')";
+
+			$query = mysqli_query($conn,$q);
+			if ($query) {
+				header('Location: student_list.php');
+			}else{
+				echo "Insert Failed!..";
+			}
 		}
 
 	}
@@ -58,6 +65,9 @@ include 'inc/header1.php';
 								<div class="form-group">
 									<label for="name">Full Name: </label>
 									<input type="text" name="name" id="name" class="form-control" required="" />
+									<?php if (isset($msg)): ?>
+									<span><?php echo $msg; ?></span>
+									<?php endif?>
 								</div>								
 								<div class="form-group">
 									<label for="cell">Cell: </label>
