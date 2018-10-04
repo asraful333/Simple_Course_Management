@@ -9,11 +9,12 @@
 		}
 	}
  //if(isset($_POST['name']) && isset($_POST['type']) && isset($_POST['password'])){
+	include 'inc/connect.php';
+
 	if(isset($_POST['login'])){
+
 	$uname=$_POST['name'];
 	$pass=$_POST['password'];
-	
-	include 'inc/connect.php';
 
 	$stm="SELECT * FROM user_tb WHERE user_name='$uname'";
 	$utb = mysqli_query($conn,$stm);
@@ -34,7 +35,11 @@
 			}
 			else
 				header('location:index.php');
+				
+				
 			
+		}else{
+		$msg= "Username or password in invalid";
 		}
 	}
 
@@ -61,8 +66,12 @@
 							
 							<form action="" method="POST">
 								<div class="form-group">
+
 									<label for="name">Name: </label>
 									<input type="text" name="name" id="name" class="form-control" required="" />
+									<?php if (isset($msg)): ?>
+									<span><?php echo $msg; ?></span>
+									<?php endif?>
 								</div>
 								
 								<div class="form-group">
