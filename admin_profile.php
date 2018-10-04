@@ -12,7 +12,7 @@
 					</div>
 					<div class="panel-body">
 						<div style="margin: 0 auto;">
-<form action="" method="POST">
+						<form action="" method="POST">
 							<table class="table table-striped">
 								<tr>
 									<th>Course ID</th>
@@ -44,7 +44,7 @@
 								?>
 
 							</table>
-	</form>						
+						</form>						
 						</div>
 					</div>
 				</div>
