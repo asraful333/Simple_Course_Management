@@ -36,7 +36,8 @@
 								<?php 
 										include 'inc/connect.php';
 
-										$q = "SELECT * FROM student_reg";
+										$q = "SELECT * FROM student_reg s INNER JOIN batch_tb b ON s.batch_id = b.batch_id INNER JOIN course_tb c ON b.course_id = c.course_id";
+										
 										$query = mysqli_query($conn,$q);
 
 										while ($res= mysqli_fetch_array($query)) {
@@ -48,8 +49,8 @@
 									<td><input type="text" name="name" id="name" class="form-control" value="<?php echo $res['student_name']; ?>" required="" /></td>
 									<td><input type="text" name="cell" id="cell" class="form-control" value="0<?php echo $res['cell']; ?>" required="" /></td>
 									<td><input type="text" name="address" id="address" class="form-control" value="<?php echo $res['address']; ?>" required="" /></td>
-									<td><input type="text" name="batch_i" id="batch_i" class="form-control" value="<?php echo $res['batch_id']; ?>" required="" /></td>
-									<td><input type="text" name="course_i" id="course_i" class="form-control" value="<?php echo $res['course_id']; ?>" required="" /></td>
+									<td><input type="text" name="batch_i" id="batch_i" class="form-control" value="<?php echo $res['batch_name']; ?>" required="" /></td>
+									<td><input type="text" name="course_i" id="course_i" class="form-control" value="<?php echo $res['course_name']; ?>" required="" /></td>
 									<td><input type="text" name="result" id="result" class="form-control" value="<?php echo $res['result']; ?>" required="" /></td>
 									<td><a class="btn btn-success" name="update" href="update_s.php?student_id=<?php echo $res['student_id']; ?>">Update</a></td>
 									<td><a class="btn btn-success" href="certificate.php?student_id=<?php echo $res['student_id']; ?>">Certificale</a></td>
