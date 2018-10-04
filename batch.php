@@ -20,13 +20,13 @@
 									<th>Batch ID</th>
 									<th>Batch Name</th>
 									<th>Batch Duration</th>
-									<th>Course ID</th>
+									<th>Course Name</th>
 									<th></th>
 									<th></th>
 								</tr>
 
 								<?php
-									$sq= "SELECT * FROM batch_tb";
+									$sq= "SELECT * FROM batch_tb b INNER JOIN course_tb c ON b.course_id = c.course_id ";
 									$que= mysqli_query($conn,$sq);
 									while ($vlu= mysqli_fetch_array($que)) {										
 								?>
@@ -35,7 +35,7 @@
 									<td><?php echo $vlu['batch_id'];?></td>
 									<td><input type="text" name="batch_n" id="batch_n" class="form-control" value="<?php echo $vlu['batch_name'];?>" required="" /></td>
 									<td><input type="text" name="batch_d" id="batch_d" class="form-control" value="<?php echo $vlu['batch_dur'];?>" required="" /></td>
-									<td><input type="text" name="course_i" id="course_i" class="form-control" value="<?php echo $vlu['course_id'];?>" required="" /></td>
+									<td><input type="text" name="course_i" id="course_i" class="form-control" value="<?php echo $vlu['course_name'];?>" required="" /></td>
 									<td><a class="btn btn-success" name="update" href="update_b.php?batch_id=<?php echo $vlu['batch_id']; ?>">Update</a></td>
 								</tr>
 
