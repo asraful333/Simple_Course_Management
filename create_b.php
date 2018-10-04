@@ -4,23 +4,29 @@
 
 		if (isset($_POST['submit'])) {
 
-												$batch_n = $_POST['batch_n'];
-												$batch_d = $_POST['batch_d'];
-												$type = $_POST['type'];
+			$batch_n = mysqli_real_escape_string($conn,$_POST['batch_n']);
+			$batch_d = mysqli_real_escape_string($conn,$_POST['batch_d']);
+			$type 	 = $_POST['type'];
 
-												
+			$sql_b= "SELECT * FROM batch_tb WHERE batch_name='$batch_n' AND course_id='$type'" ;
 
-												$qr = "INSERT INTO `batch_tb`(`batch_name`, `batch_dur`, `course_id`) VALUES ('$batch_n','$batch_d','$type')";
+			$res_b= mysqli_query($conn,$sql_b) or die(mysqli_error($conn));		
 
-												$qry = mysqli_query($conn,$qr);
+			if ((mysqli_num_rows($res_b)>0)) {
+				$msg= "In this course Batch name is already exists";
+			}
+			else{				
 
-												if ($qry) {
-													header('Location: batch.php');
-												}else{
-													echo "Insert Failed!..";
-												}
+				$qr = "INSERT INTO `batch_tb`(`batch_name`, `batch_dur`, `course_id`) VALUES ('$batch_n','$batch_d','$type')";
+				$qry = mysqli_query($conn,$qr);
+				if ($qry) {
+					header('Location: batch.php');
+				}else{
+					echo "Insert Failed!..";
+					}
+			}
 
-											}
+		}
 		
 		include 'inc/header1.php';
 		include 'inc/adminnav.php';
@@ -38,6 +44,9 @@
 								<div class="form-group">
 									<label for="batch_n">Batch Name: </label>
 									<input type="text" name="batch_n" id="batch_n" class="form-control" required="" />
+									<?php if (isset($msg)): ?>
+									<span><?php echo $msg; ?></span>
+									<?php endif?>
 								</div>
 								<div class="form-group">
 									<label for="batch_d">Batch Duration: </label>
