@@ -43,7 +43,8 @@
 								<?php 
 										include 'inc/connect.php';
 
-										$q = "SELECT * FROM student_reg";
+										$q = "SELECT * FROM student_reg s INNER JOIN batch_tb b ON s.batch_id = b.batch_id INNER JOIN course_tb c ON b.course_id = c.course_id";
+
 										$query = mysqli_query($conn,$q);
 
 										while ($res= mysqli_fetch_array($query)) {
@@ -55,8 +56,8 @@
 									<td><?php echo $res['student_name']; ?></td>
 									<td>0<?php echo $res['cell']; ?></td>
 									<td><?php echo $res['address']; ?></td>
-									<td><?php echo $res['batch_id']; ?></td>
-									<td><?php echo $res['course_id']; ?></td>
+									<td><?php echo $res['batch_name']; ?></td>
+									<td><?php echo $res['course_name']; ?></td>
 									<td><a class="btn btn-success" href="reg_print.php?student_id=<?php echo $res['student_id']; ?>">View</a></td>
 								</tr>
 
