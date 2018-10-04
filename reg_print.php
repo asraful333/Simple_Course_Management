@@ -41,7 +41,8 @@
 					
 									$student_id= $_GET['student_id'];
 
-									$q = "SELECT * FROM student_reg WHERE student_id = $student_id ";
+									$q = "SELECT * FROM student_reg s INNER JOIN batch_tb b ON s.batch_id = b.batch_id INNER JOIN course_tb c ON b.course_id = c.course_id WHERE student_id= $student_id";
+
 									$query= mysqli_query($conn,$q);
 									$res= mysqli_fetch_assoc($query);
 									
@@ -65,11 +66,11 @@
 								</tr>
 								<tr>
 									<td>Course ID</td>
-									<td><?php echo $res['course_id']; ?></td>
+									<td><?php echo $res['course_name']; ?></td>
 								</tr>
 								<tr>
 									<td>Batch ID</td>
-									<td><?php echo $res['batch_id']; ?></td>
+									<td><?php echo $res['batch_name']; ?></td>
 								</tr>
 
 
